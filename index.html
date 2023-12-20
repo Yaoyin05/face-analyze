@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Analysis</title>
+</head>
+<style>
+
+.top{
+    width: 100%;
+    background-color: black;
+    text-align: center;
+}
+.top h1{
+    color: #fff;
+    padding: 15px;
+}
+.bottom{
+    padding: 20px 0;
+    text-align: center;
+}
+.choose{
+    display: inline-block;
+    background-color: #009FCC;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+}
+.choose:hover{
+    background-color: #fff;
+    color: #009FCC;
+    transition: 0.5s;
+}
+.bottom2{
+    text-align: center;
+}
+.upload{
+    display: inline-block;
+    background-color: #009FCC;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+}
+.upload:hover{
+    background-color: #fff;
+    color: #009FCC;
+    transition: 0.5s;
+}
+input[type="file"] {
+            display: none;
+        }
+pre {
+    white-space: pre-wrap;
+}
+.result1{
+    background-color: #6e6c6e;
+}
+.result1 h2{
+    padding: 15px;
+    color: #fff;
+}
+.text{
+    font-size: 14px;
+    color: #fff;
+    padding: 0 0 15px;
+}
+.result2{
+    background-color: #5c275c;
+}
+.result2 h2{
+    padding: 15px;
+    color: #fff;
+}
+.text2{
+    font-size: 14px;
+    color: #fff;
+    padding: 0 0 15px;
+}
+nav {
+    width: 100%;
+    background: black;
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    text-align: center;
+}
+</style>
+<body>
+    <div class="top">
+    <h1>AI情緒分析</h1>
+</div>
+    <div class="bottom">
+        <label for="fileInput" class="choose">選擇檔案</label>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input id="fileInput" type="file" name="file" accept=".png, .jpg, .jpeg, .gif">
+    </div>
+    <div class="bottom2">
+        <button class="upload" type="submit">Upload</button>
+    </form>
+</div>
+</div>
+    
+{% if result %}
+
+<div class="result1"><h2>簡易結果:</h2>
+<pre class="text">  <strong>情緒:{{ result[0]['dominant_emotion'] }}<br>  性別:{{ result[0]['dominant_gender'] }} <br>  種族:{{ result[0]['dominant_race'] }}</pre>
+</strong></div>
+
+<div class="result2"><h2>完整分析結果:</h2>
+<pre class="text2">      情緒:{{ result[0]['emotion'] }} 
+      年齡:{{ result[0]['age'] }}
+      性別:{{ result[0]['gender'] }}
+      種族:{{ result[0]['race'] }}</pre>
+</div>
+
+{% endif %}
+
+<nav>&copy;copyright by ADT110139</nav>
+
+</body>
+</html>
